@@ -21,7 +21,6 @@ jobs:
         uses: machulav/ec2-github-runner@v2
         with:
           mode: start
-          market-type: spot
           pre-runner-script: |
             sudo apt-get update -y &&\
             sudo apt-get install -y docker-io git libicu-dev
@@ -32,6 +31,7 @@ jobs:
           ec2-instance-type: t2.micro
           subnet-id: subnet-0d1adf79401db0953
           security-group-id: sg-08b7c52a389e3079e
+          market-type: spot
   do-the-job:
     name: Do the job on the runner
     needs: start-runner # required to start the main job when the runner is ready
